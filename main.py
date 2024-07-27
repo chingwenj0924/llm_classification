@@ -8,8 +8,6 @@ from enum import Enum
 from openai import OpenAI
 from typing import List
 
-API_KEY = 'sk-None-VENVmlwWBot8gur9Lr4pT3BlbkFJF7AsHsMGwFm9HIHZvQhD'
-
 # Sample customer support tickets
 ticket1 = """
 I ordered a laptop from your store last week (Order #12345), but I received a tablet instead. 
@@ -21,7 +19,7 @@ Hello, I'm having trouble logging into my account. I've tried resetting my passw
 Can you please help me regain access to my account? I've been a loyal customer for years and have several pending orders.
 """
 
-client = OpenAI(api_key = API_KEY)
+client = OpenAI()
 
 def classify_ticket_simple(ticket_text: str) -> str:
     response = client.chat.completions.create(
@@ -67,7 +65,7 @@ Business impact:
 # --------------------------------------------------------------
 
 # Instructor makes it easy to get structured data like JSON from LLMs
-client = instructor.patch(OpenAI(api_key=API_KEY))
+client = instructor.patch()
 
 # --------------------------------------------------------------
 # Step 3: Define Pydantic data models
